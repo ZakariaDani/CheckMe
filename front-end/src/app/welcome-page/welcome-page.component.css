@@ -1,0 +1,22 @@
+.container  {
+    display: flex;
+    position: absolute;
+    top: -20%;
+    left: -5%;
+    height: 100%;
+    width: 100%;
+    font-size: 16pt;
+  }
+  
+  .container .row {
+    margin: 0 auto;
+    
+  }
+
+  .card {
+      width: 130%;
+  }
+
+  .card-title{
+      font-size: 24pt;
+  }
