@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { LoginRegisterService } from '../services/login-register.service';
 
 @Component({
   selector: 'app-login-page',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginRegisterService: LoginRegisterService) { }
 
   ngOnInit(): void {
   }
 
+  login(loginForm: NgForm) {
+    if (loginForm.invalid) {
+      return;
+    }
+    console.log(loginForm.value);
+    const loginUser = loginForm.value;
+    this.loginRegisterService.login(loginUser);
+    loginForm.reset();
+  }
 }

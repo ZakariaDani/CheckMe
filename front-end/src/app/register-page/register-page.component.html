@@ -1,36 +1,47 @@
-<div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
-  <form style="width: 50%;">
-    <h1>Create your new account</h1> <br>
-    <div class="form-group" style="font-size: 16pt;">
+<div
+  class="d-flex justify-content-center align-items-center"
+  style="height: 70vh"
+>
+  <form
+    #registrationForm="ngForm"
+    (ngSubmit)="registration(registrationForm)"
+    style="width: 50%"
+  >
+    <h1>Create your new account</h1>
+    <br />
+    <div class="form-group" style="font-size: 16pt">
       <label for="email">Email address</label>
-      <input
-        type="email"
-        class="form-control"
-        id="email"
-      />
+      <input type="email" class="form-control" id="email" name="email" required ngModel />
     </div>
 
-    <div class="form-group" style="font-size: 16pt;">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          class="form-control"
-          id="username"
-        />
-      </div>
+    <div class="form-group" style="font-size: 16pt">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" name="username" required ngModel />
+    </div>
 
-    <div class="form-group" style="font-size: 16pt;">
+    <div class="form-group" style="font-size: 16pt">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" />
+      <input type="password" class="form-control" id="password" name="password" required ngModel />
     </div>
-    <div class="form-group" style="font-size: 16pt;">
-        <label for="role">Select your Role</label>
-        <select id="role" class="custom-select" style="font-size: 16pt;">
-            <option selected>Consumer</option>
-            <option value="1">Manufacturer</option>
-          </select>
+    <div class="form-group" style="font-size: 16pt">
+      <label for="role">Select your Role</label>
+      <select id="role" class="custom-select" style="font-size: 16pt" name="role" required ngModel>
+        <option selected value="CONSUMER">Consumer</option>
+        <option value="MANIFACTURER">Manufacturer</option>
+      </select>
     </div>
-    <button type="submit" class="btn btn-primary col-12" aria-describedby="emailHelp" style="font-size: 16pt;">register</button>
-    <small id="emailHelp" class="form-text text-muted"><a href="login" style="font-size: 14pt;">Already have an account? Login to your existing account</a></small>
+    <button
+      type="submit"
+      class="btn btn-primary col-12"
+      aria-describedby="emailHelp"
+      style="font-size: 16pt"
+    >
+      register
+    </button>
+    <small id="emailHelp" class="form-text text-muted"
+      ><a href="login" style="font-size: 14pt"
+        >Already have an account? Login to your existing account</a
+      ></small
+    >
   </form>
 </div>

@@ -1,21 +1,38 @@
-<div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
-    <form style="width: 50%;">
-      <h1>Login to your existing account</h1> <br>
-      <div class="form-group" style="font-size: 16pt;">
-        <label for="email">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-        />
-      </div>
-  
-      <div class="form-group" style="font-size: 16pt;">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" />
-      </div>
-      <button type="submit" class="btn btn-primary col-12" aria-describedby="emailHelp" style="font-size: 16pt;">login</button>
-    <small id="emailHelp" class="form-text text-muted"><a href="register" style="font-size: 14pt;">Don't have an account? Create new account now</a></small>
-    </form>
-  </div>
-  
+<div
+  class="d-flex justify-content-center align-items-center"
+  style="height: 70vh"
+>
+  <form style="width: 50%" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <h1>Login to your existing account</h1>
+    <br />
+    <div class="form-group" style="font-size: 16pt">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" required ngModel />
+    </div>
+
+    <div class="form-group" style="font-size: 16pt">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        required
+        ngModel
+      />
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary col-12"
+      aria-describedby="emailHelp"
+      style="font-size: 16pt"
+    >
+      login
+    </button>
+    <small id="emailHelp" class="form-text text-muted"
+      ><a href="register" style="font-size: 14pt"
+        >Don't have an account? Create new account now</a
+      ></small
+    >
+  </form>
+</div>
