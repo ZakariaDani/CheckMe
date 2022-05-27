@@ -6,7 +6,7 @@ import {
   } from '@nestjs/common';
   import { InjectRepository } from '@nestjs/typeorm';
   import { RegisterUserDto } from 'src/DTO/registerUser.dto';
-  import { UserEntity } from 'src/Entity/user.entity';
+  import { ROLE, UserEntity } from 'src/Entity/user.entity';
   import { Repository } from 'typeorm';
   import * as bcrypt from 'bcryptjs';
   import { LoginUserDto } from 'src/DTO/loginUser.dto';
@@ -20,7 +20,7 @@ import {
     ) {}
   
     async registerUser(registerDto: RegisterUserDto) {
-      const { email, password } = registerDto;
+      const { email, username, password, role } = registerDto;
       const hashed = await bcrypt.hash(password, 12);
       const salt = await bcrypt.getSalt(hashed);
   
@@ -33,7 +33,9 @@ import {
   
         const user = new UserEntity();
         user.email = email;
+        user.username = username;
         user.password = hashed;
+        user.role = role;
         user.salt = salt;
   
         this.repo.create(user);

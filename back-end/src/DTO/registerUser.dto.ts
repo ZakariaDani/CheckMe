@@ -1,7 +1,10 @@
 import { IsNotEmpty, Matches, MaxLength, MinLength } from "class-validator";
+import { ROLE } from "src/Entity/user.entity";
 
 
 export class RegisterUserDto {
+    
+
     @IsNotEmpty()
     email: string;
     @IsNotEmpty()
@@ -11,6 +14,7 @@ export class RegisterUserDto {
     @MaxLength(12, {message: "choose a password between 6 and 12 characters"})
     password: string;
     @IsNotEmpty()
-    role: string;
+    @Matches(/^CONSUMER$|^MANIFACTURER$/)
+    role: ROLE;
 }
 
