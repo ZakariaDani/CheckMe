@@ -55,7 +55,7 @@ import {
       }
       const isPasswordMatch = await bcrypt.compare(password, user.password);
       if (isPasswordMatch) {
-        const jwtPayload = { email };
+        const jwtPayload = { email: user.email, username: user.username, role: user.role };
         const jwtToken = await this.jwt.signAsync(jwtPayload, {
           expiresIn: '1d',
           algorithm: 'HS512',

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -62,6 +63,9 @@ export class LoginRegisterService {
               })
               .onHidden.subscribe(() => {
                 this.jwtToken$.next(this.token);
+                const decryptedResponse: any = jwt_decode(res['token']);
+                localStorage.setItem('ROLE', decryptedResponse.role);
+                console.log(decryptedResponse);
                 localStorage.setItem('act', this.token);
                 this.router.navigateByUrl('/').then();
               });
