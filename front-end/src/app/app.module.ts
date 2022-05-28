@@ -9,13 +9,17 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomePageComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    NavBarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

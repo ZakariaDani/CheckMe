@@ -67,7 +67,7 @@ export class LoginRegisterService {
                 localStorage.setItem('ROLE', decryptedResponse.role);
                 console.log(decryptedResponse);
                 localStorage.setItem('act', this.token);
-                this.router.navigateByUrl('/').then();
+                this.router.navigateByUrl('/home').then();
               });
           }
         },
@@ -75,5 +75,19 @@ export class LoginRegisterService {
           this.toast.error('Authentification failed!', '', { timeOut: 1000 });
         }
       );
+  }
+
+
+  logout() {
+    this.token = '';
+    this.jwtToken$.next(this.token);
+    this.toast
+      .success('logged out successfully', '', { timeOut: 700 })
+      .onHidden.subscribe(() => {
+        localStorage.removeItem('act');
+        localStorage.removeItem('ROLE');
+        this.router.navigateByUrl('/').then();
+      });
+    return '';
   }
 }
