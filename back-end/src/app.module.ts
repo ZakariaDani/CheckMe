@@ -28,8 +28,6 @@ const ormOptions: TypeOrmModuleOptions = {
     }),
     ConnectionModule,
     ProductsModule,
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+  ]
 })
 export class AppModule {}

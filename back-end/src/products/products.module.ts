@@ -7,7 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     ConnectionModule,
-    ConfigModule
+    ConfigModule,
   ],
   providers: [ProductsService],
   controllers: [ProductsController]

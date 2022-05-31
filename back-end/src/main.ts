@@ -1,12 +1,11 @@
+import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { AuthService } from './auth/auth.service';
 
 async function bootstrap() {
-  let authService: AuthService;  
-  //authService.registerUser(registerDto);
   const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe());
   app.setGlobalPrefix('api');
   app.enableCors({
     origin: ['http://localhost:4200'],
