@@ -11,13 +11,7 @@ npm install -g truffle
 npm install -g ganache-cli
 npm install -g @nestjs/cli
 ```
-
-2. Download the box. This also takes care of installing the necessary dependencies.
-```
-truffle unbox ikhvost/truffle-nest-box
-```
-
-3. Run the ganache-cli.
+2. Run the ganache-cli.
 ```
 ganache-cli
 ```
