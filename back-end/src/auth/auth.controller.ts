@@ -1,5 +1,3 @@
-
-  
 import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
 import { LoginUserDto } from 'src/DTO/loginUser.dto';
 import { RegisterUserDto } from 'src/DTO/registerUser.dto';
