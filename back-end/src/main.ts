@@ -1,5 +1,4 @@
 import { ValidationPipe } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
@@ -10,7 +9,6 @@ async function bootstrap() {
   app.enableCors({
     origin: ['http://localhost:4200'],
   });
-  const config = app.get<ConfigService>(ConfigService);
-  await app.listen(config.get('APP_PORT'), config.get('APP_HOST'));
+  await app.listen('3000');
 }
 bootstrap();
