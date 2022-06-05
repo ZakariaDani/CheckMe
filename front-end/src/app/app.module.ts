@@ -11,7 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
-
+import { CheckProductComponent } from './check-product/check-product.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     LoginPageComponent,
     RegisterPageComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    CheckProductComponent
   ],
   imports: [
     BrowserModule,
