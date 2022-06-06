@@ -1,0 +1,31 @@
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <form style="display: flex; justify-content: center; align-items: center">
+    <input
+      type="text"
+      id="searchText"
+      class="searchBox"
+      placeholder="Enter Product Code"
+      required
+    />
+    <label class="qrcode-text-btn" style="width: 4%; display: none">
+      <input
+        type="file"
+        accept="image/*"
+        id="selectedFile"
+        style="display: none"
+      />
+    </label>
+    <button type="submit" id="searchButton" class="searchBtn">
+      <i class="bi bi-search"></i>
+    </button>
+  </form>
+
+  <button class="qrbutton"><i class="bi bi-qr-code fa-lg"></i> Scan QR</button>
+</div>
