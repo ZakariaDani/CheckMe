@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
 
-const PRODUCT_ADDRESS = '0x11BfCad80Db9a46f8F0f558d43E25bB6b914C695';
+const PRODUCT_ADDRESS = '0xEb86C72936b962Fec6Cba11d17fD4e95aaB8b8E4';
 const PRODUCT_ABI = [
   {
     "inputs": [],
@@ -46,7 +46,7 @@ export class ProductService {
   constructor() { }
 
    async connectContract() {
-     this.provider = Web3.givenProvider || 'http://127.0.0.1:8545';
+     this.provider = Web3.givenProvider || 'http://127.0.0.1:7545';
     this.web3js = new Web3(this.provider);
     this.accounts = await this.web3js.eth.getAccounts();
     console.log(this.accounts[0]);
