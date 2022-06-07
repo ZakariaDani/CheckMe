@@ -48,7 +48,7 @@ body{
 }
 
 .qrbutton{
-    color: white;
+    color: rgb(28, 29, 31);
     background-color: rgba(0,0,0,0);
     border: 0px;
     font-size: 20px;
@@ -57,7 +57,7 @@ body{
 }
 
 .qrbutton:hover{
-    color: #5FC9F8;
+    color: #239ed3;
     transition: color 0.5s ease;
 }
 
