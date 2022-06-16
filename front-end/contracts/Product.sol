@@ -19,13 +19,13 @@ contract Product {
     
     
     
-    function addProductItem(string memory _text, string memory _date) public returns (bool) {
-        ProductItem memory newItem = ProductItem({creator: msg.sender, productName: _text, productId: items, date: _date});
+    function addProductItem(string memory _text, string memory _date, uint256 _id) public returns (bool) {
+        ProductItem memory newItem = ProductItem({creator: msg.sender, productName: _text, productId: _id, date: _date});
         productItems.push(newItem);
         return true;
     }
 
-    function getProductItems() constant returns (uint256[], string[]) {
+    function getProductItems() public returns (uint256[] memory, string[] memory) {
         uint length = productItems.length;
 
         uint256[] memory ids = new uint256[](length);
@@ -39,15 +39,14 @@ contract Product {
         return (ids, productNames);
     }
     
-    function deleteProductItem(uint index) returns (bool success) {
-        if (index >= productItems.length) return;
+    function deleteProductItem(uint index) public returns (bool success) {
+        if (index >= productItems.length) return false;
 
         for (uint i = index; i < productItems.length - 1; i++){
             productItems[i] = productItems[i+1];
         }
 
         delete productItems[productItems.length - 1];
-        productItems.length--;
         return true;
     }
     
