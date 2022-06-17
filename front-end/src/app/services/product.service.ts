@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
 
-const PRODUCT_ADDRESS = '0x059AC8D21778fF759386Eb98004B12Ec20a426d1';
+const PRODUCT_ADDRESS = '0xcA113c72bf1e55b3539A30828C943149808ccbc5';
 
 const PRODUCT_ABI = [
   {
@@ -118,6 +118,51 @@ const PRODUCT_ABI = [
   {
     inputs: [
       {
+        internalType: 'string',
+        name: '_a',
+        type: 'string',
+      },
+      {
+        internalType: 'string',
+        name: '_b',
+        type: 'string',
+      },
+    ],
+    name: 'concat',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
+    ],
+    stateMutability: 'pure',
+    type: 'function',
+    constant: true,
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_productId',
+        type: 'uint256',
+      },
+    ],
+    name: 'searchProduct',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+    constant: true,
+  },
+  {
+    inputs: [
+      {
         internalType: 'uint256',
         name: 'index',
         type: 'uint256',
@@ -167,9 +212,13 @@ export class ProductService {
   }
 
   addProduct(newProduct: any) {
-    console.log('okkkkkkkkkkkkkkkkkkkkkk', this.accounts);
+    console.log('productIs:-----', newProduct.id);
     this.product.methods
       .addProductItem(newProduct.productName, newProduct.date, newProduct.id)
       .send({ from: this.accounts[0], gas: 1000000 });
+  }
+  async checkProduct(productId: any) {
+    let output = await this.product.methods.searchProduct(+productId).call();
+    console.log(output, 'out');
   }
 }
