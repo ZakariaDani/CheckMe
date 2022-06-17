@@ -1,1 +1,23 @@
-<p>add-product works!</p>
+<h2>Please fill out product details</h2>
+<form #addProductForm="ngForm"
+(ngSubmit)="addProduct(addProductForm)">
+  <div class="form-group">
+    <label type="text" form="productName">Product Name </label>
+    <input
+      type="text"
+      class="form-control"
+      id="productName"
+      name="productName"
+      required
+      ngModel
+    />
+    <input type="hidden" class="form-control" id="user" [value]="getUsername()" required>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary col-12"
+    aria-describedby="register"
+  >
+    Register Item
+  </button>
+</form>

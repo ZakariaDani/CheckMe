@@ -155,13 +155,21 @@ export class ProductService {
   }
 
   async connectContract() {
-    this.accounts = await this.web3.eth.getAccounts().then((result: any) => {
+    await this.web3.eth.getAccounts().then((result: any) => {
       console.log(result[0]);
+      this.accounts = result;
     });
     const network = await this.web3.eth.net.getNetworkType();
     console.log(network);
     this.product = new this.web3.eth.Contract(PRODUCT_ABI, PRODUCT_ADDRESS);
     const max_products = await this.product.methods.products().call();
     console.log(max_products);
+  }
+
+  addProduct(newProduct: any) {
+    console.log('okkkkkkkkkkkkkkkkkkkkkk', this.accounts);
+    this.product.methods
+      .addProductItem(newProduct.productName, newProduct.date, newProduct.id)
+      .send({ from: this.accounts[0], gas: 1000000 });
   }
 }
