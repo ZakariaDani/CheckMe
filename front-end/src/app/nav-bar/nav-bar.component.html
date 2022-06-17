@@ -16,7 +16,10 @@
   <div class="collapse navbar-collapse" id="basicExampleNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #4287f5">Check Products</a>
+        <a class="nav-link" href="#" style="color: #4287f5" routerLink="/home">Check Products</a>
+      </li>
+      <li *ngIf="isManufacturer()" class="nav-item">
+        <a class="nav-link" href="#" style="color: #4287f5" routerLink="/home/add-product">Add Products</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" style="color: #4287f5"> About </a>

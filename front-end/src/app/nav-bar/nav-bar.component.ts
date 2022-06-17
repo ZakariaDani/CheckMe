@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginRegisterService } from '../services/login-register.service';
 
 @Component({
@@ -14,5 +15,8 @@ export class NavBarComponent implements OnInit {
   }
   logout() {
     this.loginRegisterService.logout();
+  }
+  isManufacturer() {
+    return localStorage.getItem('ROLE')=='MANIFACTURER';
   }
 }
