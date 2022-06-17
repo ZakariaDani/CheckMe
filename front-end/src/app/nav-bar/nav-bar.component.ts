@@ -8,7 +8,7 @@ import { LoginRegisterService } from '../services/login-register.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
+  role = localStorage.getItem('ROLE');
   constructor(private loginRegisterService: LoginRegisterService) { }
 
   ngOnInit(): void {

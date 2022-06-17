@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
 
+
 const PRODUCT_ADDRESS = '0x55535B1BC08796D10005D84cE4e588D2C6c1D179';
 const PRODUCT_ABI = [
   {
@@ -41,12 +42,13 @@ export class ProductService {
   private accounts: any;
   private product: any;
 
+
   constructor() {
     if (typeof this.web3 !== 'undefined') {
       this.web3 = new Web3(this.web3.currentProvider);
     } else {
       this.web3 = new Web3(
-        new Web3.providers.HttpProvider('HTTP://127.0.0.1:8545')
+        new Web3.providers.HttpProvider('HTTP://127.0.0.1:7545')
       );
     }
   }

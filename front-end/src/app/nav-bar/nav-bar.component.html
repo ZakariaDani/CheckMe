@@ -21,6 +21,9 @@
       <li *ngIf="isManufacturer()" class="nav-item">
         <a class="nav-link" href="#" style="color: #4287f5" routerLink="/home/add-product">Add Products</a>
       </li>
+      <li class="nav-item" *ngIf="role=='MANUFACTURER'">
+        <a class="nav-link" href="#" style="color: #4287f5">Add Products</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="#" style="color: #4287f5"> About </a>
       </li>
