@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { CheckProductComponent } from './check-product/check-product.component';
+import { AddProductComponent } from './add-product/add-product.component';
  
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CheckProductComponent } from './check-product/check-product.component';
     RegisterPageComponent,
     NavBarComponent,
     HomeComponent,
-    CheckProductComponent
+    CheckProductComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
