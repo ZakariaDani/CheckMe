@@ -6,13 +6,19 @@
     align-items: center;
   "
 >
-  <form style="display: flex; justify-content: center; align-items: center">
+  <form
+    style="display: flex; justify-content: center; align-items: center"
+    #checkProductForm="ngForm"
+    (ngSubmit)="checkProduct(checkProductForm)"
+  >
     <input
       type="text"
       id="searchText"
       class="searchBox"
       placeholder="Enter Product Code"
       required
+      name="productId"
+      ngModel
     />
     <label class="qrcode-text-btn" style="width: 4%; display: none">
       <input

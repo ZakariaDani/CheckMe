@@ -54,6 +54,7 @@ export class LoginRegisterService {
       .subscribe(
         //@ts-ignore
         (res: { token: string }) => {
+          console.log('here is res', res);
           this.token = res.token;
           if (this.token) {
             this.toast
@@ -65,7 +66,7 @@ export class LoginRegisterService {
                 this.jwtToken$.next(this.token);
                 const decryptedResponse: any = jwt_decode(res['token']);
                 localStorage.setItem('ROLE', decryptedResponse.role);
-                console.log(decryptedResponse);
+                localStorage.setItem('username', decryptedResponse.username);
                 localStorage.setItem('act', this.token);
                 this.router.navigateByUrl('/home').then();
               });
@@ -76,7 +77,6 @@ export class LoginRegisterService {
         }
       );
   }
-
 
   logout() {
     this.token = '';
