@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
 
-const PRODUCT_ADDRESS = '0xEb86C72936b962Fec6Cba11d17fD4e95aaB8b8E4';
+const PRODUCT_ADDRESS = '0x059AC8D21778fF759386Eb98004B12Ec20a426d1';
 const PRODUCT_ABI = [
   {
     inputs: [],
@@ -11,6 +11,41 @@ const PRODUCT_ABI = [
         internalType: 'uint256',
         name: '',
         type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+    constant: true,
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    name: 'productItems',
+    outputs: [
+      {
+        internalType: 'address',
+        name: 'creator',
+        type: 'address',
+      },
+      {
+        internalType: 'string',
+        name: 'productName',
+        type: 'string',
+      },
+      {
+        internalType: 'uint256',
+        name: 'productId',
+        type: 'uint256',
+      },
+      {
+        internalType: 'string',
+        name: 'date',
+        type: 'string',
       },
     ],
     stateMutability: 'view',
@@ -31,6 +66,73 @@ const PRODUCT_ABI = [
     type: 'function',
     constant: true,
   },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_text',
+        type: 'string',
+      },
+      {
+        internalType: 'string',
+        name: '_date',
+        type: 'string',
+      },
+      {
+        internalType: 'uint256',
+        name: '_id',
+        type: 'uint256',
+      },
+    ],
+    name: 'addProductItem',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'getProductItems',
+    outputs: [
+      {
+        internalType: 'uint256[]',
+        name: '',
+        type: 'uint256[]',
+      },
+      {
+        internalType: 'string[]',
+        name: '',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+    constant: true,
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'index',
+        type: 'uint256',
+      },
+    ],
+    name: 'deleteProductItem',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: 'success',
+        type: 'bool',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
 ];
 
 @Injectable({
@@ -41,13 +143,12 @@ export class ProductService {
   private accounts: any;
   private product: any;
 
-
   constructor() {
     if (typeof this.web3 !== 'undefined') {
       this.web3 = new Web3(this.web3.currentProvider);
     } else {
       this.web3 = new Web3(
-        new Web3.providers.HttpProvider('HTTP://127.0.0.1:7545')
+        new Web3.providers.HttpProvider('HTTP://127.0.0.1:8545')
       );
     }
   }

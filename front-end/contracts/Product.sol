@@ -25,7 +25,7 @@ contract Product {
         return true;
     }
 
-    function getProductItems() public returns (uint256[] memory, string[] memory) {
+    function getProductItems() view public returns (uint256[] memory, string[] memory) {
         uint length = productItems.length;
 
         uint256[] memory ids = new uint256[](length);

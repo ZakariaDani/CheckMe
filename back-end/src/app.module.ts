@@ -4,13 +4,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 
-
 const ormOptions: TypeOrmModuleOptions = {
   type: 'mysql',
   host: 'localhost',
   port: 3306,
   username: 'root',
-  password: 'DaniKakashi2015',
+  password: 'root',
   database: 'checkme',
   autoLoadEntities: true,
   synchronize: true,
