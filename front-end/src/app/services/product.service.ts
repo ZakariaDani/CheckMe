@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import Web3 from 'web3';
 
 const PRODUCT_ADDRESS = '0x059AC8D21778fF759386Eb98004B12Ec20a426d1';
+
 const PRODUCT_ABI = [
   {
     inputs: [],

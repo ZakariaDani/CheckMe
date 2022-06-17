@@ -9157,6 +9157,7 @@
   },
   "schemaVersion": "3.4.7",
   "updatedAt": "2022-06-17T12:41:07.604Z",
+
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
