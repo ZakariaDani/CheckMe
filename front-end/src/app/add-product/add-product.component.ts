@@ -12,10 +12,12 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent implements OnInit {
-  isQrShown = false;
-  elementType = NgxQrcodeElementTypes.URL;
-  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-  value = 'https://www.google.com/';
+  qrProps = {
+    isQrShown: false,
+    elementType: NgxQrcodeElementTypes.URL,
+    correctionLevel: NgxQrcodeErrorCorrectionLevels.HIGH,
+    value: 'fake',
+  };
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {}
@@ -33,6 +35,7 @@ export class AddProductComponent implements OnInit {
     newProduct.id = Math.floor(Math.random() * 100000) + 1;
     this.productService.addProduct(newProduct);
     productForm.reset();
-    this.isQrShown = true;
+    this.qrProps.isQrShown = true;
+    this.qrProps.value = newProduct.id.toString();
   }
 }

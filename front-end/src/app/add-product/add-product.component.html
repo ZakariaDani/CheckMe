@@ -26,11 +26,12 @@
     Register Item
   </button>
 </form>
-
-<ngx-qrcode
-  *ngIf="isQrShown"
-  [elementType]="elementType"
-  [errorCorrectionLevel]="correctionLevel"
-  [value]="value"
-  cssClass="bshadow"
-></ngx-qrcode>
+<div *ngIf="qrProps.isQrShown" class="container mt-5 text-center">
+  <h5>Here is the QR code for your product</h5>
+  <ngx-qrcode
+    [elementType]="qrProps.elementType"
+    [errorCorrectionLevel]="qrProps.correctionLevel"
+    [value]="qrProps.value"
+    cssClass="bshadow"
+  ></ngx-qrcode>
+</div>
