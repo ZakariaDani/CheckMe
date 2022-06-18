@@ -51,12 +51,16 @@ contract Product {
     }
      
      function searchProduct(uint _productId)  public view returns (string memory) {
-        string memory output = "productName: ";
-
+        string memory output = "";
+        bool found = false;
         for (uint i = 0; i < productItems.length; i++){
             if (productItems[i].productId == _productId){
                         output=concat(output, productItems[i].productName);
+                        found = true;
             }
+        }
+        if(!found){
+            output = "fake";
         }
         return output;
     }

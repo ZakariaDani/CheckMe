@@ -10,16 +10,23 @@ import { ProductService } from '../services/product.service';
 })
 export class CheckProductComponent implements OnInit {
   constructor(private productService: ProductService) {}
-
+  message = '';
+  isMessageShown = false;
   ngOnInit(): void {}
 
-  checkProduct(checkProductForm: NgForm) {
+  async checkProduct(checkProductForm: NgForm) {
     if (checkProductForm.invalid) {
       return;
     }
     const productId = checkProductForm.value.productId;
 
-    this.productService.checkProduct(productId);
+    let result = await this.productService.checkProduct(productId);
+    if (result == 'fake') {
+      this.message = 'This product is fake';
+    } else {
+      this.message = 'This product is real';
+    }
+    this.isMessageShown = true;
     checkProductForm.reset();
   }
 }
