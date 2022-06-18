@@ -1,6 +1,5 @@
 <h2>Please fill out product details</h2>
-<form #addProductForm="ngForm"
-(ngSubmit)="addProduct(addProductForm)">
+<form #addProductForm="ngForm" (ngSubmit)="addProduct(addProductForm)">
   <div class="form-group">
     <label type="text" form="productName">Product Name </label>
     <input
@@ -11,7 +10,13 @@
       required
       ngModel
     />
-    <input type="hidden" class="form-control" id="user" [value]="getUsername()" required>
+    <input
+      type="hidden"
+      class="form-control"
+      id="user"
+      [value]="getUsername()"
+      required
+    />
   </div>
   <button
     type="submit"
@@ -21,3 +26,11 @@
     Register Item
   </button>
 </form>
+
+<ngx-qrcode
+  *ngIf="isQrShown"
+  [elementType]="elementType"
+  [errorCorrectionLevel]="correctionLevel"
+  [value]="value"
+  cssClass="bshadow"
+></ngx-qrcode>
