@@ -13,7 +13,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { CheckProductComponent } from './check-product/check-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
- 
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,7 @@ import { AddProductComponent } from './add-product/add-product.component';
     NavBarComponent,
     HomeComponent,
     CheckProductComponent,
-    AddProductComponent
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,13 +32,14 @@ import { AddProductComponent } from './add-product/add-product.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgxQRCodeModule,
     ToastrModule.forRoot({
       closeButton: true,
       progressBar: true,
-      progressAnimation: 'increasing'
+      progressAnimation: 'increasing',
     }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

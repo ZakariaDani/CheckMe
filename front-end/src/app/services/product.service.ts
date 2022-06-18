@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
 
-const PRODUCT_ADDRESS = '0xcA113c72bf1e55b3539A30828C943149808ccbc5';
+const PRODUCT_ADDRESS = '0x8B20f0d6Ee5Cb45665BF01Af003bc5014beAB052';
 
 const PRODUCT_ABI = [
   {
@@ -219,6 +219,6 @@ export class ProductService {
   }
   async checkProduct(productId: any) {
     let output = await this.product.methods.searchProduct(+productId).call();
-    console.log(output, 'out');
+    return output;
   }
 }
