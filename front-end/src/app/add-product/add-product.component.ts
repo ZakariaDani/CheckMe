@@ -33,6 +33,8 @@ export class AddProductComponent implements OnInit {
     const newProduct = productForm.value;
     newProduct.date = new Date().toISOString();
     newProduct.id = Math.floor(Math.random() * 100000) + 1;
+    newProduct.username = this.getUsername();
+    console.log(newProduct);
     this.productService.addProduct(newProduct);
     productForm.reset();
     this.qrProps.isQrShown = true;

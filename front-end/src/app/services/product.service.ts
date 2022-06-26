@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
 
-const PRODUCT_ADDRESS = '0x8B20f0d6Ee5Cb45665BF01Af003bc5014beAB052';
+const PRODUCT_ADDRESS = '0x5df55332b664a11182c4C54520af212B8d54521d';
 
 const PRODUCT_ABI = [
   {
@@ -35,12 +35,22 @@ const PRODUCT_ABI = [
       },
       {
         internalType: 'string',
+        name: 'username',
+        type: 'string',
+      },
+      {
+        internalType: 'string',
         name: 'productName',
         type: 'string',
       },
       {
         internalType: 'uint256',
         name: 'productId',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'price',
         type: 'uint256',
       },
       {
@@ -71,6 +81,11 @@ const PRODUCT_ABI = [
     inputs: [
       {
         internalType: 'string',
+        name: '_username',
+        type: 'string',
+      },
+      {
+        internalType: 'string',
         name: '_text',
         type: 'string',
       },
@@ -82,6 +97,11 @@ const PRODUCT_ABI = [
       {
         internalType: 'uint256',
         name: '_id',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: '_price',
         type: 'uint256',
       },
     ],
@@ -164,6 +184,58 @@ const PRODUCT_ABI = [
     inputs: [
       {
         internalType: 'uint256',
+        name: '_productId',
+        type: 'uint256',
+      },
+    ],
+    name: 'getProduct',
+    outputs: [
+      {
+        components: [
+          {
+            internalType: 'address',
+            name: 'creator',
+            type: 'address',
+          },
+          {
+            internalType: 'string',
+            name: 'username',
+            type: 'string',
+          },
+          {
+            internalType: 'string',
+            name: 'productName',
+            type: 'string',
+          },
+          {
+            internalType: 'uint256',
+            name: 'productId',
+            type: 'uint256',
+          },
+          {
+            internalType: 'uint256',
+            name: 'price',
+            type: 'uint256',
+          },
+          {
+            internalType: 'string',
+            name: 'date',
+            type: 'string',
+          },
+        ],
+        internalType: 'struct Product.ProductItem',
+        name: '_productItem',
+        type: 'tuple',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+    constant: true,
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
         name: 'index',
         type: 'uint256',
       },
@@ -214,11 +286,22 @@ export class ProductService {
   addProduct(newProduct: any) {
     console.log('productIs:-----', newProduct.id);
     this.product.methods
-      .addProductItem(newProduct.productName, newProduct.date, newProduct.id)
+      .addProductItem(
+        newProduct.username,
+        newProduct.productName,
+        newProduct.date,
+        newProduct.id,
+        newProduct.price
+      )
       .send({ from: this.accounts[0], gas: 1000000 });
   }
   async checkProduct(productId: any) {
     let output = await this.product.methods.searchProduct(+productId).call();
-    return output;
+    if (output != 'fake') {
+      let prod = await this.product.methods.getProduct(+productId).call();
+      return prod;
+    } else {
+      return output;
+    }
   }
 }

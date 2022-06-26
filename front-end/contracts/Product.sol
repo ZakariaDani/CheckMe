@@ -12,15 +12,17 @@ contract Product {
 
     struct ProductItem{
         address creator;
+        string username;
         string productName;
         uint256 productId;
+        uint256 price;
         string date;
     }
     
     
     
-    function addProductItem(string memory _text, string memory _date, uint256 _id) public returns (bool) {
-        ProductItem memory newItem = ProductItem({creator: msg.sender, productName: _text, productId: _id, date: _date});
+    function addProductItem(string memory _username, string memory _text, string memory _date, uint256 _id, uint256 _price) public returns (bool) {
+        ProductItem memory newItem = ProductItem({creator: msg.sender, username:_username, productName: _text, productId: _id, date: _date, price: _price});
         productItems.push(newItem);
         return true;
     }
@@ -63,6 +65,14 @@ contract Product {
             output = "fake";
         }
         return output;
+    }
+
+    function getProduct(uint _productId)  public view returns (ProductItem memory _productItem ){
+        for (uint i = 0; i < productItems.length; i++){
+            if (productItems[i].productId == _productId){
+                        return productItems[i];
+            }
+        }
     }
     
     function deleteProductItem(uint index) public returns (bool success) {
