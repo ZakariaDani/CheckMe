@@ -26,11 +26,28 @@
     </button>
   </form>
   <span class="mt-3">
-    <i class="bi bi-qr-code fa-lg"></i> Or you can Scan the product's QR Code on
+    <i class="bi bi-qr-code fa-lg"></i> You can Scan the product's QR Code on
     your smartphone
   </span>
 </div>
 
 <div *ngIf="isMessageShown" class="container mt-5 text-center">
   <h5>{{ message }}</h5>
+  <div class="card">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Product's brand <strong>{{ productDetails.creator }}</strong>
+      </li>
+      <li class="list-group-item">
+        Product's name <strong>{{ productDetails.productName }}</strong>
+      </li>
+      <li class="list-group-item">
+        Product's price <strong>{{ productDetails.price }}</strong>
+      </li>
+      <li class="list-group-item">
+        Product's date of creation
+        <strong>{{ productDetails.dateCreation | date }}</strong>
+      </li>
+    </ul>
+  </div>
 </div>
