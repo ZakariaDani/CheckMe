@@ -33,7 +33,7 @@
 
 <div *ngIf="isMessageShown" class="container mt-5 text-center">
   <h5>{{ message }}</h5>
-  <div class="card">
+  <div class="card" *ngIf="message !== 'This product is fake ❌'">
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
         Product's brand <strong>{{ productDetails.creator }}</strong>
